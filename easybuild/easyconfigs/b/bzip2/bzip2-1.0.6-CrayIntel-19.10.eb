@@ -1,6 +1,4 @@
-# contributed by Luca Marsella (CSCS)
-import os 
-
+# contributed by Luca Marsella (CSCS) 
 name = 'bzip2'
 version = '1.0.6'
 
@@ -12,13 +10,11 @@ description = """
     twice as fast at compression and six times faster at decompression.
 """
 
-toolchain = SYSTEM
+toolchain = {'name': 'CrayIntel', 'version': '19.10'}
+toolchainopts = {'pic': True}
 
 sources = [SOURCE_TAR_GZ]
 source_urls = [SOURCEFORGE_SOURCE]
-
-os.environ['CC'] = 'gcc'
-os.environ['CFLAGS'] = '-O3 -fPIC'
 
 # create pkgconfig file
 postinstallcmds = [
@@ -26,12 +22,8 @@ postinstallcmds = [
     ('echo -e "prefix=%(installdir)s \nlibdir=\${prefix}/lib \n'
      'includedir=\${prefix}/include \n\nName: bzip2 \n'
      'Description: bzip2 compression library \n'
-     'Version: 1.0.6 \n\nRequires: \n'
-     'Libs: -L\${libdir} -L\${libdir} -lbz2 \n'
+     'Version: 1.0.6 \n\nRequires: \nLibs: -L\${libdir} -lbz2 \n'
      'Cflags: -I\${includedir}" > %(installdir)s/lib/pkgconfig/%(name)s.pc')
 ]
-
-# prepend PKG_CONFIG_PATH: EasyBuild does this automatically
-#modextrapaths = {'PKG_CONFIG_PATH': ['lib/pkgconfig']}
 
 moduleclass = 'tools'
