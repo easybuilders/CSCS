@@ -3,7 +3,7 @@
 easyblock = 'ConfigureMake'
 
 name = 'PLUMED'
-version = '2.5.1'
+version = "2.6.1"
 
 homepage = 'https://www.plumed.org'
 description = """PLUMED is an open source library for free energy calculations in molecular systems which
@@ -13,13 +13,15 @@ description = """PLUMED is an open source library for free energy calculations i
  The software, written in C++, can be easily interfaced with both fortran and C/C++ codes.
 """
 
-toolchain = {'name': 'CrayGNU', 'version': '20.08'}
+toolchain = {'name': 'CrayIntel', 'version': '20.08'}
 toolchainopts = {'usempi': 'True'}
 
 source_urls = ['https://github.com/%(namelower)s/plumed2/archive/']
 sources = ['v%(version)s.tar.gz']
-patches = ['%(namelower)s-compiler.patch']
 
+builddependencies = [
+    ('binutils', '2.32'),
+]
 dependencies = [
     ('zlib', '1.2.11'),
     ('GSL', '2.5'),
@@ -32,7 +34,7 @@ preconfigopts = " CC=cc CXX=CC FC=ftn MPIEXEC=srun "
 configopts = " --enable-modules=all --enable-rpath --exec-prefix=%(installdir)s "
 
 prebuildopts = " source sourceme.sh && "
-buildopts = " CC=cc CXX=CC FC=ftn MPIEXEC=srun "
+buildopts = 'LD_RO="ld.gold -r -o"'
 
 
 sanity_check_paths = {

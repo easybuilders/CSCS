@@ -3,7 +3,7 @@
 easyblock = 'ConfigureMake'
 
 name = 'PLUMED'
-version = '2.5.1'
+version = "2.6.1"
 
 homepage = 'https://www.plumed.org'
 description = """PLUMED is an open source library for free energy calculations in molecular systems which
@@ -18,7 +18,6 @@ toolchainopts = {'usempi': 'True'}
 
 source_urls = ['https://github.com/%(namelower)s/plumed2/archive/']
 sources = ['v%(version)s.tar.gz']
-patches = ['%(namelower)s-compiler.patch']
 
 dependencies = [
     ('zlib', '1.2.11'),
