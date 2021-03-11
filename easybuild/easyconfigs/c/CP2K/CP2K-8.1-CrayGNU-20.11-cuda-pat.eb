@@ -2,7 +2,8 @@
 easyblock = 'MakeCp'
 
 name = 'CP2K'
-version = '7.1'
+version = '8.1'
+versionsuffix = '-cuda-pat'
 
 homepage = 'http://www.cp2k.org/'
 description = """
@@ -19,32 +20,37 @@ toolchainopts = {'usempi': True, 'openmp': True}
 
 source_urls = ['https://github.com/%(namelower)s/%(namelower)s/releases/download/v%(version)s.0']
 sources = [SOURCELOWER_TAR_BZ2]
-patches = [('%(name)s-%(version)s-%(toolchain_name)s.psmp', '%(builddir)s/%(namelower)s-%(version)s/arch')]
+patches = [
+    ('%(name)s-%(version)s-%(toolchain_name)s-cuda.psmp', '%(builddir)s/%(namelower)s-%(version)s/arch'),
+]
 
 builddependencies = [
     ('cray-fftw', EXTERNAL_MODULE),
     ('cray-libsci', EXTERNAL_MODULE),
+    ('cudatoolkit', EXTERNAL_MODULE),
     ('Bison', '3.3.2'),
     ('flex', '2.6.4'),
+    ('perftools-base', EXTERNAL_MODULE),
+    ('perftools-lite', EXTERNAL_MODULE)
 ]
 dependencies = [
-    ('ELPA', '2019.11.001'),
+    ('ELPA', '2020.11.001', '-cuda'),
     ('Libint-CP2K', '2.6.0'),
     ('libxc', '4.3.4'),
 ]
 
 # build type
-buildopts = "ARCH=%(name)s-%(version)s-%(toolchain_name)s VERSION=psmp"
+buildopts = "ARCH=%(name)s-%(version)s-%(toolchain_name)s-cuda VERSION=psmp"
 
 files_to_copy = [
-    (['./arch/%(name)s-%(version)s-%(toolchain_name)s.psmp'], 'arch'),
-    (['./exe/%(name)s-%(version)s-%(toolchain_name)s/*'], 'bin'),
+    (['./arch/%(name)s-%(version)s-%(toolchain_name)s-cuda.psmp'], 'arch'),
+    (['./exe/%(name)s-%(version)s-%(toolchain_name)s-cuda/*'], 'bin'),
     (['./data'], '.'),
     (['./tests'], '.'),
 ]
 
 sanity_check_paths = {
-    'files': ['arch/%(name)s-%(version)s-%(toolchain_name)s.psmp', 'bin/%(namelower)s.psmp'],
+    'files': ['arch/%(name)s-%(version)s-%(toolchain_name)s-cuda.psmp', 'bin/%(namelower)s.psmp'],
     'dirs': ['data', 'tests'],
 }
 
