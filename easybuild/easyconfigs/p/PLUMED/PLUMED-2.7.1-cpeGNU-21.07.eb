@@ -13,7 +13,7 @@ description = """PLUMED is an open source library for free energy calculations i
  The software, written in C++, can be easily interfaced with both fortran and C/C++ codes.
 """
 
-toolchain = {'name': 'cpeGNU', 'version': '21.06'}
+toolchain = {'name': 'cpeGNU', 'version': '21.07'}
 toolchainopts = {'openmp': 'True', 'usempi': 'True', 'verbose': 'True'}
 
 source_urls = ['https://github.com/%(namelower)s/plumed2/archive/']
@@ -21,18 +21,18 @@ sources = ['v%(version)s.tar.gz']
 
 builddependencies = [
     ('cray-fftw', EXTERNAL_MODULE),
-    ('cray-python', EXTERNAL_MODULE)
+    ('cray-python', EXTERNAL_MODULE),
 ]
-
 dependencies = [
     ('zlib', '1.2.11'),
-    ('GSL', '2.7')
+    ('GSL', '2.7'),
 ]
 
 # The following search options are activated by default in configure:
 # --enable-external-blas --enable-external-lapack --enable-fftw --enable-gsl --enable-mpi --enable-python
 preconfigopts = ' CC=gcc CFLAGS="" CXX=g++ CXXFLAGS="" MPIEXEC=srun '
-configopts = ' --disable-xdrfile --enable-shared --enable-modules=all --exec-prefix=%(installdir)s '
+configopts = " --disable-xdrfile --enable-shared --enable-modules=all --exec-prefix=%(installdir)s "
+
 
 sanity_check_paths = {
     'files': ['bin/%(namelower)s', 'lib/libplumedKernel.so', 'lib/libplumed.so'],
