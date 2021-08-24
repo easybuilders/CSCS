@@ -2,7 +2,7 @@
 easyblock = 'cpeToolchain'
 
 name = 'cpeGNU'
-version = "21.07"
+version = "21.08"
 
 homepage = 'https://pubs.cray.com'
 description = """Toolchain using Cray compiler wrapper with gcc module (CPE release: %s).\n""" % version
