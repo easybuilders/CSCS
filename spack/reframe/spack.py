@@ -22,7 +22,7 @@ from reframe.core.exceptions import SanityError
 spacklib = util.import_module_from_file(os.path.join(os.path.dirname(__file__), 'src', 'spack_util', 'spacklib.py'))
 spackconfig = util.import_module_from_file(os.path.join(os.path.dirname(__file__), 'src', 'spack_util', 'spack_config.py'))
 
-SPACK_VERSIONS = ['develop', '0.15.4', '0.16.1']
+SPACK_VERSIONS = ['develop', '0.15.4', '0.16.2']
 
 # TODO find a mechanism to include intel in the list
 base_cuda_compilers = ['gcc', 'cce']
@@ -259,7 +259,7 @@ class spack_config_check(rfm.RunOnlyRegressionTest):
             # cdt compilers have modules, if not they are considered os compilers
             modules.append(cdt_name + '/' + cdt_version)
             modules.append(compiler_type + '/' + version)
-            spec['spec'] += '.' + cdt_version
+            spec['spec'] += '-' + cdt_version
 
             ret.update({
                 spec['spec'] : spec
