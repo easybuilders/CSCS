@@ -41,8 +41,7 @@
  QuantumESPRESSO-7.0-CrayNvidia-21.09.eb                --set-default-module
  singularity-3.8.0-daint.eb
  Spark-2.4.7-CrayGNU-21.09-Hadoop-2.7.eb                --set-default-module
- VASP-6.2.1-CrayIntel-21.09-cuda.eb                     --set-default-module
- VASP-6.3.0-CrayNvidia-21.09-acc.eb
+ VASP-6.3.0-CrayNvidia-21.09-acc.eb                     --set-default-module
  Vc-1.4.1-CrayGNU-21.09.eb                              --set-default-module
  Visit-3.2.0-CrayGNU-21.09.eb                           --set-default-module
  VMD-1.9.3-egl.eb
@@ -64,6 +63,7 @@
  pprof-1a94d86.eb                                       --set-default-module --installpath=/apps/${system}/UES/jenkins/7.0.UP03/21.09/${system}-gpu/tools
  Scalasca-2.6-CrayGNU-21.09.eb                          --set-default-module --installpath=/apps/${system}/UES/jenkins/7.0.UP03/21.09/${system}-gpu/tools
  Score-P-7.1-CrayGNU-21.09.eb                           --set-default-module --installpath=/apps/${system}/UES/jenkins/7.0.UP03/21.09/${system}-gpu/tools
+ Score-P-7.1-CrayNvidia-21.09.eb                                             --installpath=/apps/${system}/UES/jenkins/7.0.UP03/21.09/${system}-gpu/tools
  spack-config-1.5-cdt-cuda-21.09.eb                     --set-default-module --installpath=/apps/${system}/UES/jenkins/7.0.UP03/21.09/${system}-gpu/tools
  termgraph-0.4.2-python3.eb                             --set-default-module --installpath=/apps/${system}/UES/jenkins/7.0.UP03/21.09/${system}-gpu/tools
  vtune_profiler-2021.1.1.61.eb                          --set-default-module --installpath=/apps/${system}/UES/jenkins/7.0.UP03/21.09/${system}-gpu/tools
