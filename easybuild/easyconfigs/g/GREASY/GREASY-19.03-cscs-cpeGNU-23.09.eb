@@ -9,7 +9,7 @@ description = """Greasy is a tool designed to make easier the deployment of
 embarrassingly parallel simulations in any environment. It is able to run in
 parallel a list of different tasks."""
 
-toolchain = {'name': 'cpeGNU', 'version': '21.12'}
+toolchain = {'name': 'cpeGNU', 'version': '23.09'}
 toolchainopts = {'opt': True, 'pic': True}
 
 # GREASY source code modified by us in order to properly use SLURM scheduler
@@ -19,6 +19,7 @@ sources = ['https://github.com/eth-cscs/%(name)s/archive/%(version)s.tar.gz']
 
 # add missing header '<ctime>' in src/greasytimer.cpp
 prebuildopts = 'sed -i "/#include <cstring>/a #include <ctime>" src/greasytimer.cpp && '
+
 
 sanity_check_paths = {
     'files': ['bin/%(namelower)s'],
